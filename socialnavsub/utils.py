@@ -1132,7 +1132,7 @@ class Answer:
             self.n_choices = 2 ** n_choices - 1
             assert self.n_choices > 0, 'No answer choices'
             assert self.n_choices > n_choices, 'Invalid n choices for multiple select'
-            self.choices: List[Tuple[str]] = list(chain.from_iterable(combinations(choices, r) for r in range(1, len(choices) + 1)))
+            self.choices: List[Tuple[str]] = list(itertools.chain.from_iterable(itertools.combinations(choices, r) for r in range(1, len(choices) + 1)))
             assert len(self.choices) == self.n_choices, 'Invalid number of choices'
         elif self.question_type == 'multiple_choice':
             self.n_choices = n_choices
